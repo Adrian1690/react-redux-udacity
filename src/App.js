@@ -1,25 +1,52 @@
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
+import { connect } from 'react-redux';
+import { handleInitialData } from './actions/shared';
+import LoadingBar from 'react-redux-loading';
+import Home from './components/Home';
+import Login from './components/Login';
+import AuthedRoute from './components/AuthedRoute';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    componentDidMount(){
+        this.props.dispatch(handleInitialData())
+    }
+
+    render() {
+        return (
+            <Router>
+                <Fragment>
+                    <LoadingBar />
+                    <div className="container">
+                            { this.props.loading === true ?
+                            null
+                            :
+                            <div>
+                                <Switch>
+                                <Route path="/login" exact component={Login} />
+                                <AuthedRoute path="/" exact component={Home} />
+                                {
+                                    /**
+                                        <Route path="/question/:id" exact component={TweetPage} />
+                                        <Route path="/add" component={NewTweet} />
+                                        <Route path="/leaderboard" component={NewTweet} />
+                                     */
+                                }
+                                <Route render={() => (<h1>404 - Page Not Found</h1>)} />
+                                </Switch>
+                            </div>
+                        }
+                    </div>
+                </Fragment>
+            </Router>
+        )
+    }
 }
 
-export default App;
+const mapStateToProps = ({loadingBar}) => ({
+    loading: loadingBar.default === 1
+})
+
+export default connect(mapStateToProps)(App);

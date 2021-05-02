@@ -73,3 +73,13 @@ li {
   border-radius: 25px;
   margin: 10px;
 }
+
+.question-info{
+  display: flex;
+
+}
+
+.question-info-detail{
+  display: flex;
+  flex-direction: column;
+}

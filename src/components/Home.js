@@ -1,11 +1,46 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import QuestionPortrait from './QuestionPortrait'
 
-const Home = props => {
-    //console.log(props)
-    return (
-        <h1>Home</h1>
-    )
+class Home extends React.Component {
+
+    state = {
+        showUnanswered: true
+    }
+
+    toggleQuestions = () => {
+        this.setState(currentState => ({
+            showUnanswered: !currentState.showUnanswered
+        }))
+    }
+
+    render(){
+        const { showUnanswered } = this.state
+        const { answersIds, notAnswersIds } = this.props
+        const questionIds = showUnanswered ? notAnswersIds : answersIds
+
+        return (
+            <div>
+                <button
+                    disabled={showUnanswered}
+                    onClick={this.toggleQuestions}>Unanswered Questions</button>{' '}
+                <button
+                    disabled={!showUnanswered}
+                    onClick={this.toggleQuestions}>Answered questions</button>
+
+                <ul className="questions-section">
+                {
+                    questionIds.map(questionId => (
+                        <li key={questionId}>
+                            <QuestionPortrait id={questionId} />
+                        </li>
+                    ))
+                }
+                </ul>
+            </div>
+
+        )
+    }
 }
 
 const mapStateToProps = ({questions, users, authedUser}) => {

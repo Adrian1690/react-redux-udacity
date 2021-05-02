@@ -4,10 +4,10 @@ import './App.css';
 import { connect } from 'react-redux';
 import { handleInitialData } from './actions/shared';
 import LoadingBar from 'react-redux-loading';
+import AuthedRoute from './components/AuthedRoute';
 import Home from './components/Home';
 import Login from './components/Login';
-import AuthedRoute from './components/AuthedRoute';
-
+import QuestionPage from './components/QuestionPage';
 class App extends React.Component {
 
     componentDidMount(){
@@ -27,6 +27,7 @@ class App extends React.Component {
                                 <Switch>
                                 <Route path="/login" exact component={Login} />
                                 <AuthedRoute path="/" exact component={Home} />
+                                <AuthedRoute path="/question/:id" exact component={QuestionPage} />
                                 {
                                     /**
                                         <Route path="/question/:id" exact component={TweetPage} />

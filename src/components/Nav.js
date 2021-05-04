@@ -12,6 +12,11 @@ const Nav = props => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/add" exact activeClassName='active'>
+                        Add
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to="/leaderboards" exact activeClassName='active'>
                         Leaderboards
                     </NavLink>

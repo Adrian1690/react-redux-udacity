@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 class Question extends React.Component{
 
     render(){
-        const { question } = this.props
+        const { question, optionAnswered } = this.props
         console.log(question)
+        console.log(optionAnswered)
 
         if(question === null){
             return <p>This Question doesn't exist</p>
@@ -17,11 +18,15 @@ class Question extends React.Component{
     }
 }
 
-const mapStateToProps = ({questions}, { id }) => {
+const mapStateToProps = ({authedUser, users, questions}, { id }) => {
     const question = questions[id] || null;
+    const user = users[authedUser.id];
 
+    //Check if user already answer this question
+    const optionAnswered = user.answers[id] || null
     return{
-        question
+        question,
+        optionAnswered
     }
 }
 

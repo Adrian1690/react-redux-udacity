@@ -17,7 +17,7 @@ const addQuestion = question => ({
 
 export const handleAddQuestion = (optionOneText, optionTwoText) => (dispatch, getState) => {
     const { authedUser } = getState()
-    console.log(optionOneText, optionTwoText)
+
     dispatch(showLoading())
 
     return saveQuestion({

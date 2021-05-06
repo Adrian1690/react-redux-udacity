@@ -5,7 +5,34 @@ const LeaderBoards = props => {
 
     const { leaderboards } = props;
     console.log(leaderboards)
-    return <h2>Leaderboards</h2>
+    return(
+        <div>
+            <h2>Leaderboards</h2>
+            {
+                leaderboards.map(user => {
+                    const answeredQuestions = Object.keys(user.answers).length;
+                    const createdQuestions = user.questions.length;
+
+                    return  <div key={user.id} style={{marginBottom: '10px'}}>
+                        <span className='avatar' />
+                        <div>
+                            <span>{user.name}</span>
+                            <div>
+                                Answered Questions {answeredQuestions}
+                            </div>
+                            <div>
+                                Created Questions {createdQuestions}
+                            </div>
+                        </div>
+                        <span>
+                                Total {answeredQuestions + createdQuestions}
+                        </span>
+                    </div>
+                })
+            }
+        </div>
+    )
+
 }
 
 const mapStateToProps = ({users}) => {

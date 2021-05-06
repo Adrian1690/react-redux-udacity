@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestionAnswer } from '../actions/questions'
-
+import StaticQuestion from './StaticsQuestion'
 class Question extends React.Component{
 
     state = {
@@ -38,7 +38,10 @@ class Question extends React.Component{
         }
 
         if(optionAnswered !== null) {
-            return <p>Option selected {optionAnswered}</p>
+            return <StaticQuestion
+                        question={question}
+                        optionAnswered={optionAnswered}
+                    />
         }
 
         return (

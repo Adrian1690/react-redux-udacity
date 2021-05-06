@@ -6,9 +6,7 @@ const QuestionPage =  props => {
 
     const { id } = props;
     return (
-
         <div>
-            Question Page render question
             <Question id={id} />
         </div>
 )}

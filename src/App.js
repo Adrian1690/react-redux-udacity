@@ -48,8 +48,4 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = ({loadingBar}) => ({
-    loading: loadingBar.default === 1
-})
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);

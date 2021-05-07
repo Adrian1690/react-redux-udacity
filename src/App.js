@@ -23,24 +23,21 @@ class App extends React.Component {
                 <Fragment>
                     <LoadingBar />
                     <div className="container">
-
-                        <div>
-                            <Switch>
-                            <Route path="/login" exact component={Login} />
-                            <AuthedRoute path="/" exact component={Home} />
-                            <AuthedRoute path="/add" exact component={NewQuestion} />
-                            <AuthedRoute path="/question/:id" exact component={QuestionPage} />
-                            <AuthedRoute path="/leaderboards" exact component={Leaderboards} />
-                            {
-                                /**
-                                    <Route path="/question/:id" exact component={TweetPage} />
-                                    <Route path="/add" component={NewTweet} />
-                                    <Route path="/leaderboard" component={NewTweet} />
-                                    */
-                            }
-                            <Route render={() => (<h1>404 - Page Not Found</h1>)} />
-                            </Switch>
-                        </div>
+                        <Switch>
+                        <Route path="/login" exact component={Login} />
+                        <AuthedRoute path="/" exact component={Home} />
+                        <AuthedRoute path="/add" exact component={NewQuestion} />
+                        <AuthedRoute path="/question/:id" exact component={QuestionPage} />
+                        <AuthedRoute path="/leaderboards" exact component={Leaderboards} />
+                        {
+                            /**
+                                <Route path="/question/:id" exact component={TweetPage} />
+                                <Route path="/add" component={NewTweet} />
+                                <Route path="/leaderboard" component={NewTweet} />
+                                */
+                        }
+                        <Route render={() => (<h1>404 - Page Not Found</h1>)} />
+                    </Switch>
                     </div>
                 </Fragment>
             </Router>

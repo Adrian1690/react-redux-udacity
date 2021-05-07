@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { setAuthUser } from '../actions/authedUser';
-
+import { Input, Button } from 'reactstrap'
 class Login extends React.Component {
 
     state = {
@@ -39,10 +39,13 @@ class Login extends React.Component {
 		}
 
         return (
-            <div>
+            <div className=''>
                 <form onSubmit={this.handleSubmit}>
-                    <h3>Select User to Log In</h3>
-                    <select
+                    <h3 className='center'>Welcome to the Would You Rather App!</h3>
+                    <p className='center'>Please Select a user to continue</p>
+                    <div className='login-container'>
+                    <Input
+                        type="select"
                         value={userSelected}
                         onChange={this.handleInput}
                     >
@@ -52,8 +55,10 @@ class Login extends React.Component {
                                 <option key={user.id} value={user.id}>{user.name}</option>
                             ))
                         }
-                    </select>
-                    <button type='submit'>Log In</button>
+                    </Input>
+
+                    <Button color="primary" type='submit'>Log In</Button>
+                    </div>
                 </form>
             </div>
         )

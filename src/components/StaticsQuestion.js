@@ -1,8 +1,10 @@
 import React from 'react';
 
 const StaticsQuestion = ({ question, optionAnswered }) => {
-    const optionOneVotes = question.optionOne.votes.length
-    const optionTwoVotes = question.optionTwo.votes.length
+    const optionOneVotes = question.optionOne.votes.length;
+    const optionTwoVotes = question.optionTwo.votes.length;
+    const totalVotes = optionOneVotes + optionTwoVotes;
+
     return (<div>
         <img className='avatar' src='...' alt='img' />
 
@@ -14,7 +16,8 @@ const StaticsQuestion = ({ question, optionAnswered }) => {
                 )
             }
             <div>
-                {optionOneVotes} / {optionOneVotes + optionTwoVotes}
+                {optionOneVotes} / {totalVotes}
+                ({Math.round(optionOneVotes / (totalVotes) * 100) } %)
             </div>
         </div>
         <div>
@@ -25,7 +28,8 @@ const StaticsQuestion = ({ question, optionAnswered }) => {
                 )
             }
             <div>
-                {optionTwoVotes} / {optionOneVotes + optionTwoVotes}
+                {optionTwoVotes} / {totalVotes}
+                ({Math.round(optionTwoVotes / (totalVotes) * 100) } %)
             </div>
         </div>
     </div>

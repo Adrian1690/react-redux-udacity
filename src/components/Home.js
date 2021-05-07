@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import QuestionPortrait from './QuestionPortrait'
-
+import { Button, Fade } from 'reactstrap'
 class Home extends React.Component {
 
     state = {
-        showUnanswered: true
+        showUnanswered: true,
     }
 
     toggleQuestions = () => {
@@ -20,23 +20,31 @@ class Home extends React.Component {
         const questionIds = showUnanswered ? notAnswersIds : answersIds
 
         return (
-            <div>
-                <button
+            <div className='content'>
+                <Button
+                    color="info"
                     disabled={showUnanswered}
-                    onClick={this.toggleQuestions}>Unanswered Questions</button>{' '}
-                <button
+                    onClick={this.toggleQuestions}>
+                        <b>Unanswered Questions</b>
+                    </Button>{' '}
+                <Button
+                    color="info"
                     disabled={!showUnanswered}
-                    onClick={this.toggleQuestions}>Answered questions</button>
+                    onClick={this.toggleQuestions}>
+                        <b>Answered questions</b>
+                    </Button>
 
-                <ul className="questions-section">
-                {
-                    questionIds.map(questionId => (
-                        <li key={questionId}>
-                            <QuestionPortrait id={questionId} />
-                        </li>
-                    ))
-                }
-                </ul>
+
+                    <ul className="questions-section">
+                    {
+                        questionIds.map(questionId => (
+                            <li key={questionId}>
+                                <QuestionPortrait id={questionId} />
+                            </li>
+                        ))
+                    }
+                    </ul>
+
             </div>
 
         )

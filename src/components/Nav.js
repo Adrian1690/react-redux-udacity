@@ -21,12 +21,12 @@ const Nav = props => {
                         Leaderboards
                     </NavLink>
                 </li>
-                <li>
-                    Hello, {props.authedUser.name}
-                    {' '}
-                    <Logout />
-                </li>
             </ul>
+            <span className='logout'>
+                Hello, <b>{props.authedUser.name}</b>
+                {' '}
+                <Logout />
+            </span>
         </nav>
     )
 }

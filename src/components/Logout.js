@@ -1,12 +1,13 @@
 import React from 'react';
 import { setAuthUser } from '../actions/authedUser'
 import { connect } from 'react-redux';
-
+import { Button } from 'reactstrap';
 const Logout = props => (
-    <button
+    <Button
+        color="secondary"
         onClick={() => props.dispatch(setAuthUser(null))}>
             Logout
-    </button>
+    </Button>
 )
 
 export default connect()(Logout)

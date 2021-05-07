@@ -11,32 +11,13 @@ a {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 10px;
 }
 
-.btn {
-  text-transform: uppercase;
-  margin: 35px auto;
-  padding: 10px;
-  border: 1px solid rgba(0,0,0,.29);
-  cursor: pointer;
-  background: #fff;
-  font-size: 16px;
-  width: 250px;
-  position: relative;
-}
-
-.btn:hover {
-  border-color: rgba(0,0,0,.5);
-  text-decoration: none;
-}
-
-.btn:focus {
-  outline: 0;
-  font-weight: 700;
-  border-width: 2px;
+.content{
+  margin-top:2rem;
 }
 
 .center {
@@ -47,15 +28,25 @@ a {
   font-weight: bold;
 }
 
+.nav{
+  align-items: center;
+  justify-content: space-between;
+}
+
 .nav ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   text-decoration: none;
+  margin-bottom: 0;
 }
 
 .nav li:first-child {
   padding-left: 0;
+}
+
+.nav li:last-child {
+  align-self: flex-end
 }
 
 ul {
@@ -82,4 +73,22 @@ li {
 .question-info-detail{
   display: flex;
   flex-direction: column;
+}
+
+.login-container{
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.login-container select{
+  margin-bottom: 10px;
+}
+
+.logout{
+  padding: 10px;
 }

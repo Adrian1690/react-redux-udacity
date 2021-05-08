@@ -60,9 +60,24 @@ li {
 }
 
 .avatar {
-  height: 50px;
+  height: 90px;
+  width: 90px;
   border-radius: 25px;
   margin: 10px;
+  background: url('./users.jpg') no-repeat;
+  background-position: 5% 10%;
+}
+
+.sarah {
+  background-position: 5% 10%;
+}
+
+.tyler {
+  background-position: 77% 32%;
+}
+
+.jhon{
+  background-position: 23% 7%;
 }
 
 .question-info{

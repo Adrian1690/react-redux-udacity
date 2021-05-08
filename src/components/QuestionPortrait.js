@@ -23,7 +23,7 @@ const QuestionPortrait = props => {
         <div className='question-portrait'>
             <span>{userOwner.name} asks</span>
             <div className='question-info'>
-                <span className='avatar'>img</span>
+                <span className='avatar' />
                 <div className='question-info-detail'>
                     Would you rather
                     <span>...{optionOne}...</span>

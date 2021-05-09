@@ -2,9 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Used to create the **Would You Rather Project**. To see Would You Rather Project's details see [PROJECT.md]
+(https://github.com/Adrian1690/react-redux-udacity/blob/master/PROJECT.md) file.
+
 ## Available Scripts
 
 In the project directory, you can run:
+### `yarn install`
+
+To install all packages needed.
 
 ### `yarn start`
 

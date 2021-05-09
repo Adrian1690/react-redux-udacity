@@ -211,6 +211,7 @@ li {
   padding: 5px;
   border-radius: 5px;
   position: relative;
+  width: 260px;
 }
 
 .vote>div{

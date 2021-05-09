@@ -2,8 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Used to create the **Would You Rather Project**. To see Would You Rather Project's details see [PROJECT.md]
-(https://github.com/Adrian1690/react-redux-udacity/blob/master/PROJECT.md) file.
+Used to create the **Would You Rather Project**. To see Would You Rather Project's details see [PROJECT file](https://github.com/Adrian1690/react-redux-udacity/blob/master/Project.md).
 
 ## Available Scripts
 

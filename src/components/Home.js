@@ -21,19 +21,20 @@ class Home extends React.Component {
 
         return (
             <div className='content'>
-                <Button
-                    color="info"
-                    disabled={showUnanswered}
-                    onClick={this.toggleQuestions}>
-                        <b>Unanswered Questions</b>
-                    </Button>{' '}
-                <Button
-                    color="info"
-                    disabled={!showUnanswered}
-                    onClick={this.toggleQuestions}>
-                        <b>Answered questions</b>
-                    </Button>
-
+                <div className='center'>
+                    <Button
+                        color="info"
+                        disabled={showUnanswered}
+                        onClick={this.toggleQuestions}>
+                            <b>Unanswered Questions</b>
+                        </Button>{' '}
+                    <Button
+                        color="info"
+                        disabled={!showUnanswered}
+                        onClick={this.toggleQuestions}>
+                            <b>Answered questions</b>
+                        </Button>
+                </div>
 
                     <ul className="questions-section">
                     {

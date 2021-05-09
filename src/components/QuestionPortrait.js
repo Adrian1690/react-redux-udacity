@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
-
+import { getUserClass } from '../utils/thumbs';
 /**
  * Learning use state
  */
@@ -19,15 +19,21 @@ const QuestionPortrait = props => {
         )
     }
 
+    const avatarClass = getUserClass(userOwner.id);
     return (
-        <div className='question-portrait'>
-            <span>{userOwner.name} asks</span>
+        <div className='question'>
+            <div className='name-user'>{userOwner.name} asks</div>
             <div className='question-info'>
-                <span className='avatar' />
+                <span className={`avatar ${avatarClass}`} />
                 <div className='question-info-detail'>
                     Would you rather
-                    <span>...{optionOne}...</span>
-                    <button onClick={() => setToQuestionDetail(true)}>View Poll</button>
+                    <span>{optionOne} <br />
+                    or ...
+                    </span>
+                    <button
+                        className='btn btn-success'
+                        onClick={() => setToQuestionDetail(true)}
+                        >View Poll</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getUserClass } from '../utils/thumbs';
 
 const LeaderBoards = props => {
 
@@ -8,28 +9,42 @@ const LeaderBoards = props => {
     return(
         <div>
             <h2>Leaderboards</h2>
+            <ul className="questions-section">
             {
                 leaderboards.map(user => {
                     const answeredQuestions = Object.keys(user.answers).length;
                     const createdQuestions = user.questions.length;
+                    const avatarClass = getUserClass(user.id);
+                    return  (
+                        <li key={user.id}>
+                            <div className='question'>
+                                <div className='name-user'>{user.name}</div>
+                                <div className='question-info space-between'>
+                                    <span className={`avatar ${avatarClass}`} />
+                                    <div className='question-info-detail margin-0'>
 
-                    return  <div key={user.id} style={{marginBottom: '10px'}}>
-                        <span className='avatar' />
-                        <div>
-                            <span>{user.name}</span>
-                            <div>
-                                Answered Questions {answeredQuestions}
+                                        <span>
+                                            Answered Questions
+                                            <span>{answeredQuestions}</span>
+                                        </span>
+                                        <span>
+                                            Created Questions
+                                            <span>{createdQuestions}</span>
+                                        </span>
+                                    </div>
+                                    <div className='score-section'>
+                                        score
+                                        <span>
+                                            {answeredQuestions + createdQuestions}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                Created Questions {createdQuestions}
-                            </div>
-                        </div>
-                        <span>
-                                Total {answeredQuestions + createdQuestions}
-                        </span>
-                    </div>
+                        </li>
+                    )
                 })
             }
+            </ul>
         </div>
     )
 

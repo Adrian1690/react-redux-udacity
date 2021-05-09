@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { setAuthUser } from '../actions/authedUser';
@@ -57,7 +57,7 @@ class Login extends React.Component {
                         }
                     </Input>
 
-                    <Button color="primary" type='submit'>Log In</Button>
+                    <Button color="success" type='submit'>Log In</Button>
                     </div>
                 </form>
             </div>

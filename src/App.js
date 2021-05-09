@@ -36,7 +36,7 @@ class App extends React.Component {
                                 <Route path="/leaderboard" component={NewTweet} />
                                 */
                         }
-                        <Route render={() => (<h1>404 - Page Not Found</h1>)} />
+                        <AuthedRoute component={() => (<h3>404 - Page Not Found</h3>)} />
                     </Switch>
                     </div>
                 </Fragment>

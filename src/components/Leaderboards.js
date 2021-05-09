@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUserClass } from '../utils/thumbs';
 
 const LeaderBoards = props => {
 
     const { leaderboards } = props;
-    console.log(leaderboards)
+
     return(
         <div>
             <h2>Leaderboards</h2>
@@ -14,13 +13,13 @@ const LeaderBoards = props => {
                 leaderboards.map(user => {
                     const answeredQuestions = Object.keys(user.answers).length;
                     const createdQuestions = user.questions.length;
-                    const avatarClass = getUserClass(user.id);
+
                     return  (
                         <li key={user.id}>
                             <div className='question'>
                                 <div className='name-user'>{user.name}</div>
                                 <div className='question-info space-between'>
-                                    <span className={`avatar ${avatarClass}`} />
+                                    <span className={`avatar ${user.id}`} />
                                     <div className='question-info-detail margin-0'>
 
                                         <span>

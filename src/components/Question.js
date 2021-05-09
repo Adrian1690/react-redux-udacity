@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleAddQuestionAnswer } from '../actions/questions'
-import StaticQuestion from './StaticsQuestion'
+import { handleAddQuestionAnswer } from '../actions/questions';
+import StaticsQuestion from './StaticsQuestion';
+import { Redirect } from 'react-router-dom';
 class Question extends React.Component{
 
     state = {
@@ -30,15 +31,13 @@ class Question extends React.Component{
     render(){
         const { question, author, optionAnswered } = this.props
         const { selectedOption } = this.state
-        console.log(question)
-        console.log(optionAnswered)
 
         if(question === null){
-            return <p>This Question doesn't exist</p>
+            return <Redirect to='/404' />
         }
 
         if(optionAnswered !== null) {
-            return <StaticQuestion
+            return <StaticsQuestion
                         author={author}
                         question={question}
                         optionAnswered={optionAnswered}
@@ -48,34 +47,37 @@ class Question extends React.Component{
         return (
             <div className='question'>
                 <div className='name-user'>{author.name} asks</div>
-                <form
-                    className='new-question'
-                    onSubmit={this.handleSubmit}>
+                <div className='question-info'>
+                    <span className={`avatar ${author.id}`} />
+                    <form
+                        className='new-question'
+                        onSubmit={this.handleSubmit}>
 
-                    <label>
-                        <input
-                            type="radio"
-                            value="optionOne"
-                            checked={selectedOption === 'optionOne'}
-                            onChange={this.handleInput}
-                        />
-                            {question.optionOne.text}
-                    </label>
+                        <label>
+                            <input
+                                type="radio"
+                                value="optionOne"
+                                checked={selectedOption === 'optionOne'}
+                                onChange={this.handleInput}
+                            />
+                                {question.optionOne.text}
+                        </label>
 
-                    <label>
-                        <input
-                            type="radio"
-                            value="optionTwo"
-                            checked={selectedOption === 'optionTwo'}
-                            onChange={this.handleInput}
-                        />
-                            {question.optionTwo.text}
-                    </label>
-                    <button
-                        className='btn btn-success'
-                        type="submit"
-                    >Submit</button>
-                </form>
+                        <label>
+                            <input
+                                type="radio"
+                                value="optionTwo"
+                                checked={selectedOption === 'optionTwo'}
+                                onChange={this.handleInput}
+                            />
+                                {question.optionTwo.text}
+                        </label>
+                        <button
+                            className='btn btn-success'
+                            type="submit"
+                        >Submit</button>
+                    </form>
+                </div>
             </div>
         )
     }
@@ -84,7 +86,7 @@ class Question extends React.Component{
 const mapStateToProps = ({authedUser, users, questions}, { id }) => {
     const question = questions[id] || null;
     const user = users[authedUser.id];
-    const author = users[question.author]
+    const author = question ? users[question.author] : null
 
     //Check if user already answer this question
     const optionAnswered = user.answers[id] || null

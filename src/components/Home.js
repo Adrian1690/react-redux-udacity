@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import QuestionPortrait from './QuestionPortrait'
-import { Button, Fade } from 'reactstrap'
+import { Button } from 'reactstrap'
 class Home extends React.Component {
 
     state = {

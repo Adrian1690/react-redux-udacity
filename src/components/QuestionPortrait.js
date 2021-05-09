@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
-import { getUserClass } from '../utils/thumbs';
 /**
  * Learning use state
  */
@@ -19,12 +18,11 @@ const QuestionPortrait = props => {
         )
     }
 
-    const avatarClass = getUserClass(userOwner.id);
     return (
         <div className='question'>
             <div className='name-user'>{userOwner.name} asks</div>
             <div className='question-info'>
-                <span className={`avatar ${avatarClass}`} />
+                <span className={`avatar ${userOwner.id}`} />
                 <div className='question-info-detail'>
                     Would you rather
                     <span>{optionOne} <br />

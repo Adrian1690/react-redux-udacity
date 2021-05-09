@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logout from './Logout';
 
-const Nav = props => {
+const Nav = ({ authedUser }) => {
+
     return (
         <nav className="nav">
             <ul>
@@ -23,7 +24,7 @@ const Nav = props => {
                 </li>
             </ul>
             <span className='logout'>
-                Hello, <b>{props.authedUser.name}</b>
+                Hello, <b>{authedUser.name}</b>
                 {' '}
                 <Logout />
             </span>

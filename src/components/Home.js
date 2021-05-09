@@ -20,7 +20,7 @@ class Home extends React.Component {
         const questionIds = showUnanswered ? notAnswersIds : answersIds
 
         return (
-            <div className='content'>
+            <div>
                 <div className='center'>
                     <Button
                         color="info"

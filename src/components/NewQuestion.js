@@ -40,16 +40,17 @@ class NewQuestion extends React.Component {
 
         const { optionOne, optionTwo, toHome } = this.state
 
-        console.log('render')
         if(toHome === true){
             return <Redirect to='/' />
         }
 
         return (
             <div>
-                Create
+                <h2>Create New Question</h2>
 
-                <form onSubmit={this.handleSubmit}>
+                <form
+                    className='new-question'
+                    onSubmit={this.handleSubmit}>
                     <input
                         value={optionOne}
                         onChange={this.handleInput}
@@ -66,7 +67,13 @@ class NewQuestion extends React.Component {
                         placeholder='Option Two'
                     />
 
-                    <button type="submit">Add</button>
+                    <button
+                        className='btn btn-success'
+                        type="submit"
+                        disabled={!optionOne || !optionTwo}
+                    >
+                        Add
+                    </button>
                 </form>
             </div>
 

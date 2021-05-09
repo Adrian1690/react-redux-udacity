@@ -28,7 +28,7 @@ class Question extends React.Component{
     }
 
     render(){
-        const { question, optionAnswered } = this.props
+        const { question, author, optionAnswered } = this.props
         const { selectedOption } = this.state
         console.log(question)
         console.log(optionAnswered)
@@ -39,30 +39,42 @@ class Question extends React.Component{
 
         if(optionAnswered !== null) {
             return <StaticQuestion
+                        author={author}
                         question={question}
                         optionAnswered={optionAnswered}
                     />
         }
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="radio"
-                        value="optionOne"
-                        checked={selectedOption === 'optionOne'}
-                        onChange={this.handleInput}
-                    />
-                        {question.optionOne.text}
-                    <input
-                        type="radio"
-                        value="optionTwo"
-                        checked={selectedOption === 'optionTwo'}
-                        onChange={this.handleInput}
-                        />
-                        {question.optionTwo.text}
+            <div className='question'>
+                <div className='name-user'>{author.name} asks</div>
+                <form
+                    className='new-question'
+                    onSubmit={this.handleSubmit}>
 
-                    <button type="submit">Submit</button>
+                    <label>
+                        <input
+                            type="radio"
+                            value="optionOne"
+                            checked={selectedOption === 'optionOne'}
+                            onChange={this.handleInput}
+                        />
+                            {question.optionOne.text}
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            value="optionTwo"
+                            checked={selectedOption === 'optionTwo'}
+                            onChange={this.handleInput}
+                        />
+                            {question.optionTwo.text}
+                    </label>
+                    <button
+                        className='btn btn-success'
+                        type="submit"
+                    >Submit</button>
                 </form>
             </div>
         )
@@ -72,10 +84,12 @@ class Question extends React.Component{
 const mapStateToProps = ({authedUser, users, questions}, { id }) => {
     const question = questions[id] || null;
     const user = users[authedUser.id];
+    const author = users[question.author]
 
     //Check if user already answer this question
     const optionAnswered = user.answers[id] || null
     return{
+        author,
         question,
         optionAnswered
     }
